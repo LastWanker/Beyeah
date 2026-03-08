@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SCG.beyeah1211.dao.beyeahRefundMapper">
+    <resultMap id="BaseResultMap" type="SCG.beyeah1211.entity.beyeahRefund">
+        <id column="refund_id" jdbcType="BIGINT" property="refundId"/>
+        <result column="refund_no" jdbcType="VARCHAR" property="refundNo"/>
+        <result column="after_sale_id" jdbcType="BIGINT" property="afterSaleId"/>
+        <result column="after_sale_no" jdbcType="VARCHAR" property="afterSaleNo"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="order_no" jdbcType="VARCHAR" property="orderNo"/>
+        <result column="refund_amount" jdbcType="INTEGER" property="refundAmount"/>
+        <result column="refund_status" jdbcType="TINYINT" property="refundStatus"/>
+        <result column="refund_channel" jdbcType="TINYINT" property="refundChannel"/>
+        <result column="idempotency_key" jdbcType="VARCHAR" property="idempotencyKey"/>
+        <result column="callback_payload" jdbcType="VARCHAR" property="callbackPayload"/>
+        <result column="fail_reason" jdbcType="VARCHAR" property="failReason"/>
+        <result column="success_time" jdbcType="TIMESTAMP" property="successTime"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        refund_id, refund_no, after_sale_id, after_sale_no, user_id, order_id, order_no, refund_amount,
+        refund_status, refund_channel, idempotency_key, callback_payload, fail_reason, success_time,
+        create_time, update_time
+    </sql>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="refundId"
+            parameterType="SCG.beyeah1211.entity.beyeahRefund">
+        insert into beyeah_mall_refund
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="refundNo != null">refund_no,</if>
+            <if test="afterSaleId != null">after_sale_id,</if>
+            <if test="afterSaleNo != null">after_sale_no,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="orderId != null">order_id,</if>
+            <if test="orderNo != null">order_no,</if>
+            <if test="refundAmount != null">refund_amount,</if>
+            <if test="refundStatus != null">refund_status,</if>
+            <if test="refundChannel != null">refund_channel,</if>
+            <if test="idempotencyKey != null">idempotency_key,</if>
+            <if test="callbackPayload != null">callback_payload,</if>
+            <if test="failReason != null">fail_reason,</if>
+            <if test="successTime != null">success_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="refundNo != null">#{refundNo,jdbcType=VARCHAR},</if>
+            <if test="afterSaleId != null">#{afterSaleId,jdbcType=BIGINT},</if>
+            <if test="afterSaleNo != null">#{afterSaleNo,jdbcType=VARCHAR},</if>
+            <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+            <if test="orderId != null">#{orderId,jdbcType=BIGINT},</if>
+            <if test="orderNo != null">#{orderNo,jdbcType=VARCHAR},</if>
+            <if test="refundAmount != null">#{refundAmount,jdbcType=INTEGER},</if>
+            <if test="refundStatus != null">#{refundStatus,jdbcType=TINYINT},</if>
+            <if test="refundChannel != null">#{refundChannel,jdbcType=TINYINT},</if>
+            <if test="idempotencyKey != null">#{idempotencyKey,jdbcType=VARCHAR},</if>
+            <if test="callbackPayload != null">#{callbackPayload,jdbcType=VARCHAR},</if>
+            <if test="failReason != null">#{failReason,jdbcType=VARCHAR},</if>
+            <if test="successTime != null">#{successTime,jdbcType=TIMESTAMP},</if>
+            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="SCG.beyeah1211.entity.beyeahRefund">
+        update beyeah_mall_refund
+        <set>
+            <if test="refundNo != null">refund_no = #{refundNo,jdbcType=VARCHAR},</if>
+            <if test="afterSaleId != null">after_sale_id = #{afterSaleId,jdbcType=BIGINT},</if>
+            <if test="afterSaleNo != null">after_sale_no = #{afterSaleNo,jdbcType=VARCHAR},</if>
+            <if test="userId != null">user_id = #{userId,jdbcType=BIGINT},</if>
+            <if test="orderId != null">order_id = #{orderId,jdbcType=BIGINT},</if>
+            <if test="orderNo != null">order_no = #{orderNo,jdbcType=VARCHAR},</if>
+            <if test="refundAmount != null">refund_amount = #{refundAmount,jdbcType=INTEGER},</if>
+            <if test="refundStatus != null">refund_status = #{refundStatus,jdbcType=TINYINT},</if>
+            <if test="refundChannel != null">refund_channel = #{refundChannel,jdbcType=TINYINT},</if>
+            <if test="idempotencyKey != null">idempotency_key = #{idempotencyKey,jdbcType=VARCHAR},</if>
+            <if test="callbackPayload != null">callback_payload = #{callbackPayload,jdbcType=VARCHAR},</if>
+            <if test="failReason != null">fail_reason = #{failReason,jdbcType=VARCHAR},</if>
+            <if test="successTime != null">success_time = #{successTime,jdbcType=TIMESTAMP},</if>
+            <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where refund_id = #{refundId,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_refund
+        where refund_id = #{refundId,jdbcType=BIGINT}
+        limit 1
+    </select>
+
+    <select id="selectByAfterSaleId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_refund
+        where after_sale_id = #{afterSaleId,jdbcType=BIGINT}
+        limit 1
+    </select>
+
+    <select id="selectByIdempotencyKey" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_refund
+        where idempotency_key = #{idempotencyKey,jdbcType=VARCHAR}
+        limit 1
+    </select>
+</mapper>

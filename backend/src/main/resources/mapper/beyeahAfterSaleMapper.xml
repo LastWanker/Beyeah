@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SCG.beyeah1211.dao.beyeahAfterSaleMapper">
+    <resultMap id="BaseResultMap" type="SCG.beyeah1211.entity.beyeahAfterSale">
+        <id column="after_sale_id" jdbcType="BIGINT" property="afterSaleId"/>
+        <result column="after_sale_no" jdbcType="VARCHAR" property="afterSaleNo"/>
+        <result column="user_id" jdbcType="BIGINT" property="userId"/>
+        <result column="order_id" jdbcType="BIGINT" property="orderId"/>
+        <result column="order_no" jdbcType="VARCHAR" property="orderNo"/>
+        <result column="order_item_id" jdbcType="BIGINT" property="orderItemId"/>
+        <result column="goods_id" jdbcType="BIGINT" property="goodsId"/>
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="refund_amount" jdbcType="INTEGER" property="refundAmount"/>
+        <result column="reason" jdbcType="VARCHAR" property="reason"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason"/>
+        <result column="after_sale_status" jdbcType="TINYINT" property="afterSaleStatus"/>
+        <result column="refund_no" jdbcType="VARCHAR" property="refundNo"/>
+        <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        after_sale_id, after_sale_no, user_id, order_id, order_no, order_item_id, goods_id, goods_name,
+        refund_amount, reason, description, reject_reason, after_sale_status, refund_no, handle_time,
+        is_deleted, create_time, update_time
+    </sql>
+
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="afterSaleId"
+            parameterType="SCG.beyeah1211.entity.beyeahAfterSale">
+        insert into beyeah_mall_after_sale
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="afterSaleNo != null">after_sale_no,</if>
+            <if test="userId != null">user_id,</if>
+            <if test="orderId != null">order_id,</if>
+            <if test="orderNo != null">order_no,</if>
+            <if test="orderItemId != null">order_item_id,</if>
+            <if test="goodsId != null">goods_id,</if>
+            <if test="goodsName != null">goods_name,</if>
+            <if test="refundAmount != null">refund_amount,</if>
+            <if test="reason != null">reason,</if>
+            <if test="description != null">description,</if>
+            <if test="rejectReason != null">reject_reason,</if>
+            <if test="afterSaleStatus != null">after_sale_status,</if>
+            <if test="refundNo != null">refund_no,</if>
+            <if test="handleTime != null">handle_time,</if>
+            <if test="isDeleted != null">is_deleted,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="afterSaleNo != null">#{afterSaleNo,jdbcType=VARCHAR},</if>
+            <if test="userId != null">#{userId,jdbcType=BIGINT},</if>
+            <if test="orderId != null">#{orderId,jdbcType=BIGINT},</if>
+            <if test="orderNo != null">#{orderNo,jdbcType=VARCHAR},</if>
+            <if test="orderItemId != null">#{orderItemId,jdbcType=BIGINT},</if>
+            <if test="goodsId != null">#{goodsId,jdbcType=BIGINT},</if>
+            <if test="goodsName != null">#{goodsName,jdbcType=VARCHAR},</if>
+            <if test="refundAmount != null">#{refundAmount,jdbcType=INTEGER},</if>
+            <if test="reason != null">#{reason,jdbcType=VARCHAR},</if>
+            <if test="description != null">#{description,jdbcType=VARCHAR},</if>
+            <if test="rejectReason != null">#{rejectReason,jdbcType=VARCHAR},</if>
+            <if test="afterSaleStatus != null">#{afterSaleStatus,jdbcType=TINYINT},</if>
+            <if test="refundNo != null">#{refundNo,jdbcType=VARCHAR},</if>
+            <if test="handleTime != null">#{handleTime,jdbcType=TIMESTAMP},</if>
+            <if test="isDeleted != null">#{isDeleted,jdbcType=TINYINT},</if>
+            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+
+    <update id="updateByPrimaryKeySelective" parameterType="SCG.beyeah1211.entity.beyeahAfterSale">
+        update beyeah_mall_after_sale
+        <set>
+            <if test="afterSaleNo != null">after_sale_no = #{afterSaleNo,jdbcType=VARCHAR},</if>
+            <if test="userId != null">user_id = #{userId,jdbcType=BIGINT},</if>
+            <if test="orderId != null">order_id = #{orderId,jdbcType=BIGINT},</if>
+            <if test="orderNo != null">order_no = #{orderNo,jdbcType=VARCHAR},</if>
+            <if test="orderItemId != null">order_item_id = #{orderItemId,jdbcType=BIGINT},</if>
+            <if test="goodsId != null">goods_id = #{goodsId,jdbcType=BIGINT},</if>
+            <if test="goodsName != null">goods_name = #{goodsName,jdbcType=VARCHAR},</if>
+            <if test="refundAmount != null">refund_amount = #{refundAmount,jdbcType=INTEGER},</if>
+            <if test="reason != null">reason = #{reason,jdbcType=VARCHAR},</if>
+            <if test="description != null">description = #{description,jdbcType=VARCHAR},</if>
+            <if test="rejectReason != null">reject_reason = #{rejectReason,jdbcType=VARCHAR},</if>
+            <if test="afterSaleStatus != null">after_sale_status = #{afterSaleStatus,jdbcType=TINYINT},</if>
+            <if test="refundNo != null">refund_no = #{refundNo,jdbcType=VARCHAR},</if>
+            <if test="handleTime != null">handle_time = #{handleTime,jdbcType=TIMESTAMP},</if>
+            <if test="isDeleted != null">is_deleted = #{isDeleted,jdbcType=TINYINT},</if>
+            <if test="createTime != null">create_time = #{createTime,jdbcType=TIMESTAMP},</if>
+            <if test="updateTime != null">update_time = #{updateTime,jdbcType=TIMESTAMP},</if>
+        </set>
+        where after_sale_id = #{afterSaleId,jdbcType=BIGINT}
+    </update>
+
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_after_sale
+        where after_sale_id = #{afterSaleId,jdbcType=BIGINT}
+          and is_deleted = 0
+        limit 1
+    </select>
+
+    <select id="selectByAfterSaleNo" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_after_sale
+        where after_sale_no = #{afterSaleNo,jdbcType=VARCHAR}
+          and is_deleted = 0
+        limit 1
+    </select>
+
+    <select id="selectByOrderItemId" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_after_sale
+        where order_item_id = #{orderItemId,jdbcType=BIGINT}
+          and is_deleted = 0
+        limit 1
+    </select>
+
+    <select id="findAfterSaleList" parameterType="Map" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from beyeah_mall_after_sale
+        <where>
+            and is_deleted = 0
+            <if test="userId != null">and user_id = #{userId}</if>
+            <if test="afterSaleStatus != null">and after_sale_status = #{afterSaleStatus}</if>
+            <if test="orderNo != null and orderNo != ''">and order_no = #{orderNo}</if>
+        </where>
+        order by create_time desc
+        <if test="start!=null and limit!=null">
+            limit #{start},#{limit}
+        </if>
+    </select>
+
+    <select id="getTotalAfterSales" parameterType="Map" resultType="int">
+        select count(*)
+        from beyeah_mall_after_sale
+        <where>
+            and is_deleted = 0
+            <if test="userId != null">and user_id = #{userId}</if>
+            <if test="afterSaleStatus != null">and after_sale_status = #{afterSaleStatus}</if>
+            <if test="orderNo != null and orderNo != ''">and order_no = #{orderNo}</if>
+        </where>
+    </select>
+</mapper>

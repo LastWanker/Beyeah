@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SCG.beyeah1211.dao.AdminRbacMapper">
+    <select id="selectRoleCodesByAdminUserId" resultType="java.lang.String">
+        select r.role_code
+        from beyeah_admin_user_role ur
+                 join beyeah_admin_role r on r.role_id = ur.role_id and r.is_deleted = 0
+        where ur.admin_user_id = #{adminUserId}
+    </select>
+
+    <select id="selectPermissionCodesByAdminUserId" resultType="java.lang.String">
+        select distinct p.permission_code
+        from beyeah_admin_user_role ur
+                 join beyeah_admin_role_permission rp on rp.role_id = ur.role_id
+                 join beyeah_admin_permission p on p.permission_id = rp.permission_id and p.is_deleted = 0
+        where ur.admin_user_id = #{adminUserId}
+    </select>
+</mapper>

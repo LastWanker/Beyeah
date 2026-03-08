@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="SCG.beyeah1211.dao.AdminOperationLogMapper">
+    <insert id="insertSelective" useGeneratedKeys="true" keyProperty="logId"
+            parameterType="SCG.beyeah1211.entity.AdminOperationLog">
+        insert into beyeah_admin_operation_log
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="operatorAdminId != null">operator_admin_id,</if>
+            <if test="action != null">action,</if>
+            <if test="resourceType != null">resource_type,</if>
+            <if test="resourceId != null">resource_id,</if>
+            <if test="requestJson != null">request_json,</if>
+            <if test="responseCode != null">response_code,</if>
+            <if test="traceId != null">trace_id,</if>
+            <if test="ip != null">ip,</if>
+            <if test="createTime != null">create_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="operatorAdminId != null">#{operatorAdminId,jdbcType=INTEGER},</if>
+            <if test="action != null">#{action,jdbcType=VARCHAR},</if>
+            <if test="resourceType != null">#{resourceType,jdbcType=VARCHAR},</if>
+            <if test="resourceId != null">#{resourceId,jdbcType=VARCHAR},</if>
+            <if test="requestJson != null">#{requestJson,jdbcType=VARCHAR},</if>
+            <if test="responseCode != null">#{responseCode,jdbcType=INTEGER},</if>
+            <if test="traceId != null">#{traceId,jdbcType=VARCHAR},</if>
+            <if test="ip != null">#{ip,jdbcType=VARCHAR},</if>
+            <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+        </trim>
+    </insert>
+</mapper>
